@@ -5,37 +5,19 @@ public class GoogleLogin {
 	private String name;
 	private String email;
 	private Customer customer;
-	private String image;
+	private String picture;
 
-	public GoogleLogin(String idGoogleLogin, String name, String email, Customer customer, String image) {
+	public GoogleLogin() {
+		super();
+	}
+
+	public GoogleLogin(String idGoogleLogin, String name, String email, Customer customer, String picture) {
 		super();
 		this.idGoogleLogin = idGoogleLogin;
 		this.name = name;
 		this.email = email;
 		this.customer = customer;
-		this.image = image;
-	}
-
-	public GoogleLogin(String idGoogleLogin, String name, String email, Customer customer) {
-		super();
-		this.idGoogleLogin = idGoogleLogin;
-		this.name = name;
-		this.email = email;
-		this.customer = customer;
-	}
-
-	@Override
-	public String toString() {
-		return "GoogleLogin [idGoogleLogin=" + idGoogleLogin + ", name=" + name + ", email=" + email + ", customer="
-				+ customer + "]";
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
+		this.picture = picture;
 	}
 
 	public String getIdGoogleLogin() {
@@ -68,6 +50,20 @@ public class GoogleLogin {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	@Override
+	public String toString() {
+		return "GoogleLogin [idGoogleLogin=" + idGoogleLogin + ", name=" + name + ", email=" + email + ", customer="
+				+ customer + ", picture=" + picture + "]";
 	}
 
 }

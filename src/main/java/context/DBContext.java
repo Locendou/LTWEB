@@ -19,7 +19,7 @@ public class DBContext {
 	private static final String portNumber = "3306";
 	private static final String instance = "";// LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
 	private static final String userID = "root";
-	private static final String password = "123456";
+	private static final String password = "loc123456789";
 	private static HikariDataSource dataSource;
 	static Jdbi jdbi;
 	

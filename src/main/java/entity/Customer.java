@@ -65,7 +65,8 @@ public class Customer {
 	public String toString() {
 		return "Customer [idCustomer=" + idCustomer + ", userName=" + userName + ", passWord=" + passWord + ", name="
 				+ name + ", address=" + address + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", id_role_member=" + id_role_member + "]";
+				+ ", id_role_member=" + id_role_member + ", isDelete=" + isDelete + ", isActive=" + isActive
+				+ ", create_Date=" + create_Date + ", image=" + image + "]";
 	}
 
 	public int getIdCustomer() {

@@ -33,6 +33,9 @@ public class LoginControl extends HttpServlet {
 		boolean verify = VerifyRecaptchas.verify(gRecap);
 		HttpSession session = request.getSession();
 		Customer account = AuthDAO.login(userName, passWord);
+		System.out.println(account);
+		System.out.println(userName);
+		System.out.println(passWord);
 		String ipAddress = request.getRemoteAddr();
 		Log log = new Log(Log.INFO, ipAddress, -1, this.name, "", 0);
 		if (account == null && verify) {

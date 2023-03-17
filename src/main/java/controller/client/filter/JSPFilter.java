@@ -30,7 +30,7 @@ public class JSPFilter extends HttpFilter implements Filter {
 				&& !requestURI.endsWith("/Introduce.jsp")
 				&& !requestURI.endsWith("/Register.jsp")
 				&& !requestURI.endsWith("/Contact.jsp")
-				&& !requestURI.endsWith("/Service.jsp")&& !requestURI.endsWith("/VerifyEmail.jsp")) {
+				&& !requestURI.endsWith("/Service.jsp")) {
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/IndexControl");
 
 			httpRequest.setAttribute("isDispatched", true);
