@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.client.AuthDAO;
-import entity.Customer;
+import entity.Account;
 import util.VerifyRecaptchas;
 
 @WebServlet("/Register")
@@ -49,7 +49,7 @@ public class RegisterControl extends HttpServlet {
 
 			request.getRequestDispatcher("/client/Register.jsp").forward(request, response);
 		} else {
-			Customer a = new Customer(user, passWord, name, address, email, phone);
+			Account a = new Account(user, passWord, name, address, email, phone);
 			request.setAttribute("cus", a);
 			request.getRequestDispatcher("/VerifyEmailControl").forward(request, response);
 		

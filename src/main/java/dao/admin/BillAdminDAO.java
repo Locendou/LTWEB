@@ -2,13 +2,8 @@ package dao.admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import context.DBContext;
-import entity.Customer;
-import entity.Order;
 
 public class BillAdminDAO {
 	

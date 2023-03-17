@@ -1,31 +1,31 @@
 package entity;
 
 public class GoogleLogin {
-	private String idGoogleLogin;
+	private String id;
 	private String name;
 	private String email;
-	private Customer customer;
+	private boolean varified_email;
 	private String picture;
+
+	public GoogleLogin(String id, String name, String email, boolean varified_email, String picture) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.varified_email = varified_email;
+		this.picture = picture;
+	}
 
 	public GoogleLogin() {
 		super();
 	}
 
-	public GoogleLogin(String idGoogleLogin, String name, String email, Customer customer, String picture) {
-		super();
-		this.idGoogleLogin = idGoogleLogin;
-		this.name = name;
-		this.email = email;
-		this.customer = customer;
-		this.picture = picture;
+	public String getId() {
+		return id;
 	}
 
-	public String getIdGoogleLogin() {
-		return idGoogleLogin;
-	}
-
-	public void setIdGoogleLogin(String idGoogleLogin) {
-		this.idGoogleLogin = idGoogleLogin;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -44,12 +44,12 @@ public class GoogleLogin {
 		this.email = email;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public boolean isVarified_email() {
+		return varified_email;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setVarified_email(boolean varified_email) {
+		this.varified_email = varified_email;
 	}
 
 	public String getPicture() {
@@ -62,8 +62,8 @@ public class GoogleLogin {
 
 	@Override
 	public String toString() {
-		return "GoogleLogin [idGoogleLogin=" + idGoogleLogin + ", name=" + name + ", email=" + email + ", customer="
-				+ customer + ", picture=" + picture + "]";
+		return "CustomerGoogle [id=" + id + ", name=" + name + ", email=" + email + ", varified_email=" + varified_email
+				+ ", picture=" + picture + "]";
 	}
 
 }

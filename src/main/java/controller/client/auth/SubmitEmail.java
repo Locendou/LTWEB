@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.client.AuthDAO;
-import entity.Customer;
+import entity.Account;
 import util.VerifyRecaptchas;
 
 /**
@@ -27,9 +27,9 @@ public class SubmitEmail extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		Customer customer = (Customer) session.getAttribute("custemp");
+		Account customer = (Account) session.getAttribute("custemp");
 		String codeverify = request.getParameter("codeverify");
-		boolean checkCustommerExits = AuthDAO.checkAccountExist(customer.getUserName(), customer.getEmail());
+		boolean checkCustommerExits = AuthDAO.checkAccountExist(customer.getAccountName(), customer.getEmail());
 		LocalDateTime lastTime = (LocalDateTime) session.getAttribute("timeNow");
 		LocalDateTime currentTime = LocalDateTime.now();
 		String gRecap = request.getParameter("g-recaptcha-response");
@@ -45,8 +45,8 @@ public class SubmitEmail extends HttpServlet {
 		    request.setAttribute("error", "Mã xác thực không chính xác!");
 		    request.getRequestDispatcher("/client/VerifyEmail.jsp").forward(request, response);
 		} else if (checkCustommerExits == false) {
-		    AuthDAO.signup(customer.getUserName(), customer.getPassWord(), customer.getName(), customer.getEmail(),
-		        customer.getEmail(), customer.getPhoneNumber());
+		    AuthDAO.signup(customer.getAccountName(), customer.getPassword(), customer.getFullName(), customer.getEmail(),
+		        customer.getEmail(), customer.getPhone());
 		    request.getRequestDispatcher("/client/Login.jsp").forward(request, response);
 		}
 

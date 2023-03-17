@@ -6,10 +6,10 @@ public class FacebookLogin {
 	private String email;
 	private String numberPhone;
 	private String picture;
-	private Customer customer;
+	private Account customer;
 
 	public FacebookLogin(String idFacebookLogin, String name, String email, String numberPhone, String picture,
-			Customer customer) {
+			Account customer) {
 		super();
 		this.idFacebookLogin = idFacebookLogin;
 		this.name = name;
@@ -63,11 +63,11 @@ public class FacebookLogin {
 		this.picture = picture;
 	}
 
-	public Customer getCustomer() {
+	public Account getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(Account customer) {
 		this.customer = customer;
 	}
 

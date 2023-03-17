@@ -163,7 +163,7 @@ public class Log extends AbBean implements Serializable {
 	@Override
 	public boolean insert(Jdbi db) {
 		Integer i = db.withHandle(handle -> handle.execute(
-				"INSERT INTO logs(`level`, `ip`, `idCustomer`, src, content, create_add, `status`) VALUES(?,?,?,?,?,NOW(),?)",
+				"INSERT INTO logs(`level`, `ip`, `idCustomer`, src, content, createAt, `status`) VALUES(?,?,?,?,?,NOW(),?)",
 				this.level,this.getIp(), getCustomerId() == -1 ? null : getCustomerId(), this.src, this.content, this.status));
 		return i == 1;
 	}

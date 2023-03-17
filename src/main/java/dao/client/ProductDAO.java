@@ -11,19 +11,19 @@ public class ProductDAO {
 		String query = "";
 		switch (cid) {
 		case 0:
-			query = "select count(*) from product";
+			query = "select count(*) from products";
 			break;
 		case 1:
-			query = "select count(*) from product where idCategorie in(7,2,5,9,13)";
+			query = "select count(*) from products where idCategorie in(7,2,5,9,13)";
 			break;
 		case 2:
-			query = "select count(*) from product where idCategorie in(4,11,8,3,13)";
+			query = "select count(*) from products where idCategorie in(4,11,8,3,13)";
 			break;
 		case 3:
-			query = "select count(*) from product where idCategorie in(1,3,5,6,12)";
+			query = "select count(*) from products where idCategorie in(1,3,5,6,12)";
 			break;
 		case 4:
-			query = "select count(*) from product  where discount>priceProduct";
+			query = "select count(*) from products  where discount>priceProduct";
 			break;
 		default:
 			break;
@@ -48,23 +48,23 @@ public class ProductDAO {
 		String query = "";
 		switch (cid) {
 		case 0:
-			query = "select idProduct,nameProduct,priceProduct,discount,idCategorie from product order by " + sort + " "
-					+ type + "  limit ?,12";
+			query = "select idProduct,nameProduct,priceProduct,idCategorie from products order by " + sort + " " + type
+					+ "  limit ?,12";
 			break;
 		case 1:
-			query = "select idProduct,nameProduct,priceProduct,discount,idCategorie from product where idCategorie in(7,2,5,9,13) order by "
+			query = "select idProduct,nameProduct,priceProduct,idCategorie from products where idCategorie in(7,2,5,9,13) order by "
 					+ sort + " " + type + "  limit ?,12";
 			break;
 		case 2:
-			query = "select idProduct,nameProduct,priceProduct,discount,idCategorie from product where idCategorie in(4,11,8,3,13) order by "
+			query = "select idProduct,nameProduct,priceProduct,idCategorie from products where idCategorie in(4,11,8,3,13) order by "
 					+ sort + " " + type + "  limit ?,12";
 			break;
 		case 3:
-			query = "select idProduct,nameProduct,priceProduct,discount,idCategorie from product where idCategorie in(1,3,5,6,12,13) order by "
+			query = "select idProduct,nameProduct,priceProduct,idCategorie from products where idCategorie in(1,3,5,6,12,13) order by "
 					+ sort + " " + type + "  limit ?,12";
 			break;
 		case 4:
-			query = "select idProduct,nameProduct,priceProduct,discount,idCategorie from product where discount>priceProduct order by "
+			query = "select idProduct,nameProduct,priceProduct,idCategorie from products where discount>priceProduct order by "
 					+ sort + " " + type + "  limit ?,12";
 			break;
 		default:
@@ -76,8 +76,8 @@ public class ProductDAO {
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
 					list.add(new Product(rs.getInt("idProduct"), rs.getString("nameProduct"),
-							rs.getDouble("priceProduct"), rs.getDouble("discount"),
-							UtilDAO.findListImageByIdProduct(rs.getInt("idProduct"))));
+							rs.getDouble("priceProduct"), UtilDAO.findListImageByIdProduct(rs.getInt("idProduct")),
+							rs.getInt("discount"),rs.getDouble("discountPrice")));
 				}
 			}
 		} catch (Exception e) {
@@ -88,6 +88,6 @@ public class ProductDAO {
 
 	public static void main(String[] args) {
 
-		System.out.println(pagingProduct(1, 1, "idCategorie", "asc"));
+		System.out.println(pagingProduct(1, 0, "idProduct", "asc"));
 	}
 }

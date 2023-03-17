@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.admin.LoginAdminDAO;
-import entity.Customer;
+import entity.Account;
 
 @WebServlet("/AdminLoginController")
 public class AdminLoginController extends HttpServlet {
@@ -28,7 +28,7 @@ public class AdminLoginController extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String username = request.getParameter("admin-username");
 		String password = request.getParameter("admin-password");
-		Customer a = LoginAdminDAO.loginAdmin(username, password);
+		Account a = LoginAdminDAO.loginAdmin(username, password);
 		if(a!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("admin", a);

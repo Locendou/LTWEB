@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.client.AuthDAO;
-import entity.Customer;
+import entity.Account;
 
 /**
  * Servlet implementation class LoginFacebook
@@ -35,10 +35,10 @@ public class LoginFacebook extends HttpServlet {
 		String pid = request.getParameter("pid");
 		HttpSession session = request.getSession();
 		if (!name.equalsIgnoreCase("undefined") && !name.isEmpty()) {
-			Customer cus = null;
+			Account cus = null;
 			cus = AuthDAO.loginFacebook(id, email);
 			if (action.equals("Face")) {
-				AuthDAO.signinFacebook(id, name, email);
+				AuthDAO.signinFacebook(id, name, email,pic);
 				cus = AuthDAO.loginFacebook(id, email);
 				session.setAttribute("acc", cus);
 				session.setMaxInactiveInterval(1800);

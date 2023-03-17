@@ -2,11 +2,11 @@ package entity;
 
 public class Star {
 	private int idStar;
-	private Customer customer;
+	private Account customer;
 	private int idproduct;
 	private String NumberStar;
 
-	public Star(int idStar, Customer customer, int idproduct, String numberStar) {
+	public Star(int idStar, Account customer, int idproduct, String numberStar) {
 		super();
 		this.idStar = idStar;
 		this.customer = customer;
@@ -26,11 +26,11 @@ public class Star {
 		this.idStar = idStar;
 	}
 
-	public Customer getCustomer() {
+	public Account getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(Account customer) {
 		this.customer = customer;
 	}
 

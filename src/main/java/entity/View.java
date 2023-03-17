@@ -4,8 +4,8 @@ public class View {
 	private int idView;
 	private int idProduct;
 	private String status;
-	private Customer customer;
-	public View(int idView, int idProduct, String status, Customer customer) {
+	private Account customer;
+	public View(int idView, int idProduct, String status, Account customer) {
 		super();
 		this.idView = idView;
 		this.idProduct = idProduct;
@@ -38,10 +38,10 @@ public class View {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Customer getCustomer() {
+	public Account getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(Account customer) {
 		this.customer = customer;
 	}
 	

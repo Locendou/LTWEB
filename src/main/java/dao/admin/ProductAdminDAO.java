@@ -16,8 +16,8 @@ public class ProductAdminDAO {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new Product(rs.getInt("idProduct"), rs.getString("nameProduct"), rs.getDouble("priceProduct"),
-						rs.getDouble("discount"), UtilDAO.findListImageByIdProduct(rs.getInt("idProduct"))));
+//				list.add(new Product(rs.getInt("idProduct"), rs.getString("nameProduct"), rs.getDouble("priceProduct"),
+//						rs.getDouble("discount"), UtilDAO.findListImageByIdProduct(rs.getInt("idProduct"))));
 			}
 		} catch (Exception e) {
 		}
@@ -63,8 +63,8 @@ public class ProductAdminDAO {
 			ps.setString(1, cid);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				return new Product(rs.getInt("idProduct"), rs.getString("nameProduct"), rs.getDouble("priceProduct"),
-						rs.getDouble("discount"), UtilDAO.findListImageByIdProduct(rs.getInt("idProduct")));
+//				return new Product(rs.getInt("idProduct"), rs.getString("nameProduct"), rs.getDouble("priceProduct"),
+//						rs.getDouble("discount"), UtilDAO.findListImageByIdProduct(rs.getInt("idProduct")));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

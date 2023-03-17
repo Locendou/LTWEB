@@ -1,8 +1,9 @@
 package util;
 
+import org.apache.commons.codec.binary.Base64;
+
 import java.security.MessageDigest;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 
 public class EnCode {
 	public static String toSHA1(String st) {

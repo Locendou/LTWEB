@@ -1,7 +1,6 @@
 package controller.client.auth;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +17,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import dao.client.AuthDAO;
-import entity.Customer;
-import entity.CustomerGoogle;
+import entity.Account;
+import entity.GoogleLogin;
 import util.Constants;
 
 /**
@@ -42,10 +41,10 @@ public class LoginGoogle extends HttpServlet {
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
 		String accessToken = getToken(code);
-		CustomerGoogle user = getUserInfo(accessToken);
+		GoogleLogin user = getUserInfo(accessToken);
 		String pid = request.getParameter("pid");
 		HttpSession session = request.getSession();
-		Customer cus = AuthDAO.LoginGG(user.getId(), user.getEmail());
+		Account cus = AuthDAO.LoginGG(user.getId(), user.getEmail());
 		if (cus == null) {
 			AuthDAO.signinGoogle(user.getId(), user.getName(), user.getEmail(), user.getPicture());
 			cus = AuthDAO.LoginGG(user.getId(), user.getEmail());
@@ -79,10 +78,10 @@ public class LoginGoogle extends HttpServlet {
 		return accessToken;
 	}
 
-	public static CustomerGoogle getUserInfo(String accessToken) throws ClientProtocolException, IOException {
+	public static GoogleLogin getUserInfo(String accessToken) throws ClientProtocolException, IOException {
 		String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
 		String response = Request.Get(link).execute().returnContent().asString();
-		CustomerGoogle googlePojo = new Gson().fromJson(response, CustomerGoogle.class);
+		GoogleLogin googlePojo = new Gson().fromJson(response, GoogleLogin.class);
 		return googlePojo;
 	}
 

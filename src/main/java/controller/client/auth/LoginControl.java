@@ -1,7 +1,6 @@
 package controller.client.auth;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import bean.Log;
 import context.DB;
-import context.DBContext;
 import dao.client.AuthDAO;
-import entity.Customer;
+import entity.Account;
 import util.VerifyRecaptchas;
 
 @WebServlet("/Login")
@@ -32,10 +30,7 @@ public class LoginControl extends HttpServlet {
 		String gRecap = request.getParameter("g-recaptcha-response");
 		boolean verify = VerifyRecaptchas.verify(gRecap);
 		HttpSession session = request.getSession();
-		Customer account = AuthDAO.login(userName, passWord);
-		System.out.println(account);
-		System.out.println(userName);
-		System.out.println(passWord);
+		Account account = AuthDAO.login(userName, passWord);
 		String ipAddress = request.getRemoteAddr();
 		Log log = new Log(Log.INFO, ipAddress, -1, this.name, "", 0);
 		if (account == null && verify) {

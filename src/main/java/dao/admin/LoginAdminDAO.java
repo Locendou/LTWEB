@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import context.DBContext;
-import entity.Customer;
+import entity.Account;
 import util.EnCode;
 
 public class LoginAdminDAO {
-	public static Customer loginAdmin(String email, String pass) {
+	public static Account loginAdmin(String email, String pass) {
 		pass = EnCode.toSHA1(pass);
 
 		String query = "select * from Account where email = ? and password  = ? and  isAdmin = 1 ";
@@ -20,7 +20,7 @@ public class LoginAdminDAO {
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				return new Customer(rs.getInt("idCustomer"), rs.getString("userName"), rs.getString("password"),
+				return new Account(rs.getInt("idCustomer"), rs.getString("userName"), rs.getString("password"),
 						rs.getString("Name"), rs.getString("Address"), rs.getString("Email"),
 						rs.getString("NumberPhone"), rs.getInt("id_role_member"));
 			}

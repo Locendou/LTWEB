@@ -1,4 +1,4 @@
-//package dao.client;
+package dao.client;//package dao.client;
 //
 //import java.sql.Connection;
 //import java.sql.Date;
@@ -9,17 +9,16 @@
 //
 //import context.DBContext;
 //import entity.Customer;
-//import entity.Bill;
-//import entity.BillDetail;
+//import entity.Order;
 //import entity.Product;
 //
 //public class BillDAO {
-//	public static void createBill(Bill bill) {
+//	public static void createBill(Order order) {
 //		String query = "insert into Bill (uid) values(?);";
 //		try {
 //			Connection conn = DBContext.getConnection();
 //			PreparedStatement ps = conn.prepareStatement(query);
-//			ps.setInt(1, bill.getBuyer().getId());
+//			ps.setInt(1, order.getCustomer().getIdCustomer());
 //			ps.executeUpdate();
 //		} catch (Exception e) {
 //
@@ -81,7 +80,7 @@
 //			ResultSet rs = ps.executeQuery();
 //			while (rs.next()) {
 //				list.add(new Bill(rs.getInt(1), AuthDAO.checkAccountExistByid(rs.getString(2)), rs.getString(3),
-//						rs.getLong(4), rs.getString(5),rs.getString(6)));
+//						rs.getLong(4), rs.getString(5), rs.getString(6)));
 //			}
 //		} catch (Exception e) {
 //
@@ -100,7 +99,7 @@
 //			ResultSet rs = ps.executeQuery();
 //			while (rs.next()) {
 //				list.add(new Bill(rs.getInt(1), AuthDAO.checkAccountExistByid(rs.getString(2)), rs.getString(3),
-//						rs.getLong(4), rs.getString(5),rs.getString(6)));
+//						rs.getLong(4), rs.getString(5), rs.getString(6)));
 //			}
 //		} catch (Exception e) {
 //
@@ -118,7 +117,7 @@
 //			ResultSet rs = ps.executeQuery();
 //			while (rs.next()) {
 //				return new Bill(rs.getInt(1), AuthDAO.checkAccountExistByid(rs.getString(2)), rs.getString(3),
-//						rs.getLong(4), rs.getString(5),rs.getString(6));
+//						rs.getLong(4), rs.getString(5), rs.getString(6));
 //			}
 //		} catch (Exception e) {
 //
@@ -155,7 +154,7 @@
 //			ResultSet rs = ps.executeQuery();
 //			while (rs.next()) {
 //				return new Bill(rs.getInt(1), AuthDAO.checkAccountExistByid(rs.getString(2)), rs.getString(3),
-//						rs.getLong(4), rs.getString(5),rs.getString(6));
+//						rs.getLong(4), rs.getString(5), rs.getString(6));
 //			}
 //		} catch (Exception e) {
 //
@@ -166,8 +165,7 @@
 //
 //	public static List<BillDetail> getBillProductByBid(String bid) {
 //		List<BillDetail> list = new ArrayList<>();
-//		String query = "select bpid,unitPrice,quantity,b.bid,pid from Billproduct bp join Bill b"
-//				+ " where  b.bid = ?";
+//		String query = "select bpid,unitPrice,quantity,b.bid,pid from Billproduct bp join Bill b" + " where  b.bid = ?";
 //		int i = 0;
 //		try {
 //			Connection conn = DBContext.getConnection();
@@ -175,8 +173,8 @@
 //			ps.setString(1, bid);
 //			ResultSet rs = ps.executeQuery();
 //			while (rs.next()) {
-//				list.add(new BillDetail(rs.getInt(1), rs.getDouble(2), rs.getInt(3),
-//						BillDAO.getBillforBillProduct(bid), BillDAO.getListProductBybid(bid).get(i)));
+//				list.add(new BillDetail(rs.getInt(1), rs.getDouble(2), rs.getInt(3), BillDAO.getBillforBillProduct(bid),
+//						BillDAO.getListProductBybid(bid).get(i)));
 //				i++;
 //			}
 //		} catch (Exception e) {

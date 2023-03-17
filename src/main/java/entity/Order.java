@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 public class Order implements Serializable {
@@ -9,7 +8,7 @@ public class Order implements Serializable {
 	private String dateAdd; // ngay dat
 	private String deliveryDate; // ngay mua
 	private String StatusPay; // Trinh trang thanh toan
-	private Customer customer;
+	private Account customer;
 	private double endow; // giam gia
 	private String status;
 	private String address;
@@ -19,8 +18,8 @@ public class Order implements Serializable {
 		super();
 	}
 
-	public Order(int idOrder, String dateAdd, String deliveryDate, String statusPay, Customer customer, double endow,
-			String status, String address, List<OrderDetail> orderDetails) {
+	public Order(int idOrder, String dateAdd, String deliveryDate, String statusPay, Account customer, double endow,
+                 String status, String address, List<OrderDetail> orderDetails) {
 		super();
 		this.idOrder = idOrder;
 		this.dateAdd = dateAdd;
@@ -88,11 +87,11 @@ public class Order implements Serializable {
 		StatusPay = statusPay;
 	}
 
-	public Customer getCustomer() {
+	public Account getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(Account customer) {
 		this.customer = customer;
 	}
 

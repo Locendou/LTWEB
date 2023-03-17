@@ -7,19 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import context.DBContext;
-import entity.Customer;
-import util.EnCode;
+import entity.Account;
 
 public class AccountDAO {
-	public static List<Customer> getListAccount() {
-		ArrayList<Customer> list = new ArrayList<>();
+	public static List<Account> getListAccount() {
+		ArrayList<Account> list = new ArrayList<>();
 		String query = "select * from Account where isAdmin = 0 ";
 		try {
 			Connection conn = DBContext.getConnection();
 			PreparedStatement ps = conn.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new Customer(rs.getInt("idCustomer"), rs.getString("userName"), rs.getString("password"),
+				list.add(new Account(rs.getInt("idCustomer"), rs.getString("userName"), rs.getString("password"),
 						rs.getString("Name"), rs.getString("Address"), rs.getString("Email"),
 						rs.getString("NumberPhone"), rs.getInt("id_role_member")));
 			}
@@ -28,7 +27,7 @@ public class AccountDAO {
 		return list;
 	}
 
-	public static Customer getAccountById(String uid) {
+	public static Account getAccountById(String uid) {
 		String query = "select * from Account where uid = ? ";
 		try {
 			Connection conn = DBContext.getConnection();
@@ -36,7 +35,7 @@ public class AccountDAO {
 			ps.setString(1, uid);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				return new Customer(rs.getInt("idCustomer"), rs.getString("userName"), rs.getString("password"),
+				return new Account(rs.getInt("idCustomer"), rs.getString("userName"), rs.getString("password"),
 						rs.getString("Name"), rs.getString("Address"), rs.getString("Email"),
 						rs.getString("NumberPhone"), rs.getInt("id_role_member"));
 			}

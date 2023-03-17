@@ -3,10 +3,10 @@ package entity;
 public class Comment {
 	private int idComment;
 	private String content;
-	private Customer customer;
+	private Account customer;
 	private int idProduct;
 
-	public Comment(int idComment, String content, Customer customer, int idProduct) {
+	public Comment(int idComment, String content, Account customer, int idProduct) {
 		super();
 		this.idComment = idComment;
 		this.content = content;
@@ -34,11 +34,11 @@ public class Comment {
 		this.content = content;
 	}
 
-	public Customer getCustomer() {
+	public Account getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(Account customer) {
 		this.customer = customer;
 	}
 

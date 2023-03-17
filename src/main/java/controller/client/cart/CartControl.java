@@ -1,20 +1,12 @@
 package controller.client.cart;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import entity.Customer;
-import entity.Order;
-import entity.OrderDetail;
 
 @WebServlet("/CartControl")
 public class CartControl extends HttpServlet {

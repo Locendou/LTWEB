@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.client.AuthDAO;
-import entity.Customer;
+import entity.Account;
 import util.SendEmail;
 
 /**
@@ -24,7 +23,7 @@ public class VerifyEmailControl extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		Customer customer = (Customer) request.getAttribute("cus");
+		Account customer = (Account) request.getAttribute("cus");
 		String email = request.getParameter("email");
 		System.out.println(email);
 		request.setAttribute("email", customer.getEmail());
